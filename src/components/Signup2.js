@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 
-import { signup2, addUser } from '../actions';
+import { signup2, addUser, getData, login } from '../actions';
 
 class Signup2 extends React.Component {
   state = {
@@ -25,11 +25,9 @@ class Signup2 extends React.Component {
     e.preventDefault();
     this.props.addUser(this.props.newUserFirstName,this.props.newUserLastName,this.state.credentials.email,this.state.credentials.password)
     
-    // .then(res => {
-    //   if (this.state.password) {
-    //     this.props.history.push('/signup3');
-    //   }
-    // });
+    setTimeout(1000,this.props.login(this.state.credentials.email,this.state.credentials.password))
+    this.props.history.push('/signup3');
+
 
     console.log('newUserEmail: ', this.state.credentials.email)
     console.log('newUserPassword: ', this.state.credentials.password)
@@ -69,10 +67,10 @@ const mapStateToProps = state => ({
   error: state.error,
   loggingIn: state.loggingIn,
   newUserFirstName: state.newUserFirstName,
-  newUserEmail: state.newUserEmail,
+  newUserLastName: state.newUserLastName,
 });
 
 export default connect(
   mapStateToProps,
-  { signup2, addUser }
+  { signup2, addUser, getData, login }
 )(Signup2);

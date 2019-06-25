@@ -1,3 +1,8 @@
+///////ALL AXIOS.POSTS FOLLOW THE FORMAT .put(`/users/${user.id}`, {json of what I want to change} )
+////// FOR EXAMPLE: .put(`/users/${user.id}`, {username: jack, email: asdf@jack.com} )
+/////.put(`/users/${user.id}`, {personalvalues: [...state.personalvalues] } )
+
+import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const LOGIN_START = 'LOGIN_START';
@@ -15,7 +20,7 @@ export const login = (username,password) => dispatch => {
 
     }} )
     .then(res => {
-      localStorage.setItem('token', res.data.payload);
+      localStorage.setItem('token', res.data.access_token);
       dispatch({ type: LOGIN_SUCCESS });
       return true;
     })
@@ -32,12 +37,14 @@ export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_DATA_START });
   axiosWithAuth()
-    .get('/users')
+    .get('/users/getcurrentuser')
     .then(res => {
+      
       console.log(res.data)
       dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
     })
     .catch(err => {
+      console.log('hello', localStorage.getItem('token'))
       console.log(err.response);
       dispatch({ type: FETCH_DATA_FAILURE, payload: err.response });
     });
@@ -49,8 +56,8 @@ export const ADD_USER_FAILURE = 'ADD_USER_FAILURE';
 
 export const addUser = (firstName,lastName,email,password) => dispatch => {
   dispatch({ type: ADD_USER_START });
-  axiosWithAuth()
-  .post('/createnewuser', {
+  axios
+  .post('https://essentialism-project.herokuapp.com/createnewuser', {
     "username": `${email}`,  
     "password": `${password}`
 
@@ -60,13 +67,17 @@ export const addUser = (firstName,lastName,email,password) => dispatch => {
     // "password": `${username}`,
   })
     .then(res => {
-      console.log(res.data)
+      localStorage.setItem('token', res.data.access_token);
+      console.log('reponse', res)
       dispatch({ type: ADD_USER_SUCCESS, payload: res.data });
     })
     .catch(err => {
+      console.log('catch')
       console.log(err.response);
       dispatch({ type: ADD_USER_FAILURE, payload: err.response });
     });
+
+    
 };
 
 export const UPDATE_USER_START = 'UPDATE_USER_START';

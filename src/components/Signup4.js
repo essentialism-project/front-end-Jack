@@ -7,9 +7,9 @@ class Signup4 extends React.Component {
   render() {
     return (
       <div>
-          <button>{this.props.currentUser.personalvalues.personalvalue1}</button>
-          <button>{this.props.currentUser.personalvalues.personalvalue2}</button>
-          <button>{this.props.currentUser.personalvalues.personalvalue3}</button>
+          <button>{this.props.currentUser.personalvalues[0].personalvalue}</button>
+          <button>{this.props.currentUser.personalvalues[1].personalvalue}</button>
+          <button>{this.props.currentUser.personalvalues[2].personalvalue}</button>
       </div>
     );
   }

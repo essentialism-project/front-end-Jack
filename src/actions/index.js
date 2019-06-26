@@ -110,3 +110,9 @@ export const SIGNUP2 = `SIGNUP2`;
 export const signup2 = creds2 => dispatch => {
   dispatch({ type: SIGNUP2, payload: creds2})
 }
+
+export const SUBMITVALUES = `SUBMITVALUES`;
+
+export const submitValues = values => dispatch => {
+  dispatch({ type: SUBMITVALUES, payload: values})
+}

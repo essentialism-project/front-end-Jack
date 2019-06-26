@@ -16,7 +16,8 @@ import {
     FETCH_DATA_FAILURE,
     SIGNUP1,
     SIGNUP2,
-    SUBMITVALUES,
+    SUBMIT_VALUES,
+    SUBMIT_TEXT,
     } from '../actions/index';
     
     const initialState = {
@@ -115,12 +116,20 @@ import {
               newUserEmail: action.payload[0],
               newUserPassword: action.payload[1],
             }
-        case SUBMITVALUES:
+        case SUBMIT_VALUES:
           return {
               ...state, 
               currentUser: {
                 ...state.currentUser,
                 personalvalues: [{...state.currentUser.personalvalues[0],personalvalue: action.payload[0] },{...state.currentUser.personalvalues[1],personalvalue: action.payload[1] },{...state.currentUser.personalvalues[2],personalvalue: action.payload[2] },{...state.currentUser.personalvalues[3],personalvalue: 'Unrelated to Core Values' }]
+              }
+          }
+        case SUBMIT_TEXT:
+          return {
+              ...state, 
+              currentUser: {
+                ...state.currentUser,
+                personalvalues: [{...state.currentUser.personalvalues[0],personalvaluetext: action.payload[0] },{...state.currentUser.personalvalues[1],personalvaluetext: action.payload[1] },{...state.currentUser.personalvalues[2],personalvaluetext: action.payload[2] },{...state.currentUser.personalvalues[3]}]
               }
           }
         default:

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { updateUser, submitValues } from '../actions'
+import { updateUser, submitValues, getData } from '../actions'
   
 const defaultValues1 = [
   'Relationships with Family and Friends',
@@ -72,6 +72,7 @@ class Signup3 extends React.Component {
     e.preventDefault();
     this.props.submitValues(this.state.selectedValues)
     this.props.history.push('/signup4');
+    setTimeout(2000,this.props.updateUser(this.props.currentUser))
 
     console.log('submitValues called')
   }
@@ -80,7 +81,7 @@ class Signup3 extends React.Component {
   render() {
       console.log(this.props.currentUser)
     return (
-      <body className = 'lightGrey'>
+      <div className = 'lightGrey'>
         <h1 className = 'white'>What is Important to You?</h1>
         <h2 className = 'white'>Select the Three Values that are The most Important to You</h2>
         <div className = 'valueContainer'>
@@ -92,7 +93,7 @@ class Signup3 extends React.Component {
           <button>back</button>
           <button onClick = {this.submitValues}>next</button>
         </div>
-      </body>
+      </div>
     );
   }
 }
@@ -105,5 +106,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { updateUser, submitValues }
+  { updateUser, submitValues, getData }
 )(Signup3);

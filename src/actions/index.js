@@ -111,8 +111,16 @@ export const signup2 = creds2 => dispatch => {
   dispatch({ type: SIGNUP2, payload: creds2})
 }
 
-export const SUBMITVALUES = `SUBMITVALUES`;
+export const SUBMIT_VALUES = `SUBMIT_VALUES`;
 
 export const submitValues = values => dispatch => {
-  dispatch({ type: SUBMITVALUES, payload: values})
+  console.log('payload: ',values)
+  dispatch({ type: SUBMIT_VALUES, payload: values})
+}
+
+export const SUBMIT_TEXT = `SUBMIT_TEXT`;
+
+export const submitText = textBits => dispatch => {
+  console.log('payload: ', textBits)
+  dispatch({ type: SUBMIT_TEXT, payload: textBits})
 }

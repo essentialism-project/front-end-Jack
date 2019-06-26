@@ -109,6 +109,22 @@ background: radial-gradient(698.36px at 50% 50%, #6D6D6D 0%, #363636 59.63%, #28
 h1 {
   padding-top: 1rem;
   margin: 0;
+  text-align: center;
+}
+
+.greyHeader {
+  color: #DADADA;
+  font-weight: normal;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.darkGreyHeader {
+  color: rgba(255, 255, 255, 0.41);
+  font-weight: normal;
+  width: 72%;
+  margin: .4rem auto;
+
 }
 
 span {
@@ -123,4 +139,31 @@ span {
   width: 44%;
   margin-left: 28%;
   margin-top: 3rem;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.inputColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 19rem;
+  margin-top: 1rem;
+}
+
+.inputBox {
+  background: linear-gradient(138.26deg, rgba(255, 255, 255, 0.24) 5.77%, rgba(196, 196, 196, 0) 56.95%);
+  height: 14rem;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  height: 10rem;
+  color: white;
 }

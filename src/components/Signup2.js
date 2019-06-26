@@ -25,7 +25,8 @@ class Signup2 extends React.Component {
     e.preventDefault();
     this.props.addUser(this.props.newUserFirstName,this.props.newUserLastName,this.state.credentials.email,this.state.credentials.password)
     
-    setTimeout(2000,this.props.login(this.state.credentials.email,this.state.credentials.password))
+    setTimeout(4000,this.props.login(this.state.credentials.email,this.state.credentials.password))
+    setTimeout(4000,this.props.getData)
     this.props.history.push('/signup3');
 
 

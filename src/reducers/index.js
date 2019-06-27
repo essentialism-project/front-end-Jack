@@ -18,6 +18,7 @@ import {
     SIGNUP2,
     SUBMIT_VALUES,
     SUBMIT_TEXT,
+    SUBMIT_PROJECTS,
     } from '../actions/index';
     
     const initialState = {
@@ -102,7 +103,8 @@ import {
             return {
               ...state,
               updatingUser: false,
-              error: action.payload
+              error: action.payload[0],
+              currentUser: action.payload[1]
             };
         case SIGNUP1:
             return {
@@ -129,7 +131,15 @@ import {
               ...state, 
               currentUser: {
                 ...state.currentUser,
-                personalvalues: [{...state.currentUser.personalvalues[0],personalvaluetext: action.payload[0] },{...state.currentUser.personalvalues[1],personalvaluetext: action.payload[1] },{...state.currentUser.personalvalues[2],personalvaluetext: action.payload[2] },{...state.currentUser.personalvalues[3]}]
+                personalvalues: [{...state.currentUser.personalvalues[0],description: action.payload[0] },{...state.currentUser.personalvalues[1],description: action.payload[1] },{...state.currentUser.personalvalues[2],description: action.payload[2] },{...state.currentUser.personalvalues[3]}]
+              }
+          }
+        case SUBMIT_PROJECTS:
+          return {
+              ...state, 
+              currentUser: {
+                ...state.currentUser,
+                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3], projects: action.payload}]
               }
           }
         default:

@@ -4,6 +4,7 @@ import { updateUser, submitText } from '../actions'
 
 class Signup4 extends React.Component {
 
+
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +22,7 @@ class Signup4 extends React.Component {
     this.state.text2,
     this.state.text3,
     ]);
+    this.props.history.push('/signup5')
   }
 
   handleInputChange = e => {
@@ -49,7 +51,7 @@ class Signup4 extends React.Component {
         </div>
         <div className = 'signUpNav'>
           <button>back</button>
-          <button onClick = {this.submitValues}>next</button>
+          <button onClick = {this.submitText}>next</button>
         </div>
       </div>
     );

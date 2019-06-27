@@ -59,8 +59,16 @@ export const addUser = (firstName,lastName,email,password) => dispatch => {
   axios
   .post('https://essentialism-project.herokuapp.com/createnewuser', {
     "username": `${email}`,  
-    "password": `${password}`
-
+    "password": `${password}`,
+    "userRoles": [
+      {
+        "role": {
+          "roleid": 2,
+          "name": "user"
+        }
+      }
+    ]
+    
     // "firstName": `${username}`,  
     // "lastName": `${username}`,
     // "email": `${username}`,  
@@ -70,6 +78,7 @@ export const addUser = (firstName,lastName,email,password) => dispatch => {
       localStorage.setItem('token', res.data.access_token);
       console.log('reponse', res)
       dispatch({ type: ADD_USER_SUCCESS, payload: res.data });
+      return true;
     })
     .catch(err => {
       console.log('catch')
@@ -84,18 +93,18 @@ export const UPDATE_USER_START = 'UPDATE_USER_START';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
 
-export const updateUser = (user) => dispatch => {
+export const updateUser = (user,id) => dispatch => {
   dispatch({ type: UPDATE_USER_START });
   console.log('UPDATING THIS USER:' , user)
   axiosWithAuth()
-  .put(`/users/${user.id}`, user )
+  .put(`/users/user/${id}`, user )
     .then(res => {
       console.log(res.data)
       dispatch({ type: UPDATE_USER_SUCCESS, payload: user });
     })
     .catch(err => {
       console.log(err.response);
-      dispatch({ type: UPDATE_USER_FAILURE, payload: err.response });
+      dispatch({ type: UPDATE_USER_FAILURE, payload: [err.response,user] });
     });
 };
 
@@ -123,4 +132,11 @@ export const SUBMIT_TEXT = `SUBMIT_TEXT`;
 export const submitText = textBits => dispatch => {
   console.log('payload: ', textBits)
   dispatch({ type: SUBMIT_TEXT, payload: textBits})
+}
+
+export const SUBMIT_PROJECTS = `SUBMIT_PROJECTS`;
+
+export const submitProjects = projects => dispatch => {
+  console.log('payload: ', projects)
+  dispatch({ type: SUBMIT_PROJECTS, payload: projects})
 }

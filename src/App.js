@@ -8,6 +8,7 @@ import Signup2 from './components/Signup2';
 import Signup3 from './components/Signup3';
 import Signup4 from './components/Signup4';
 import Signup5 from './components/Signup5';
+import Signup6 from './components/Signup6';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css'
 
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/signup3" component={Signup3} />
         <Route exact path="/signup4" component={Signup4} />
         <Route exact path="/signup5" component={Signup5} />
+        <Route exact path="/signup6" component={Signup6} />
         <PrivateRoute exact path="/protected" component={HomePage} />
         <PrivateRoute exact path="/protected/update" component={UpdateSelf} />
       </div>

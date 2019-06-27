@@ -167,3 +167,69 @@ span {
   height: 10rem;
   color: white;
 }
+
+.projectInput {
+  width: 5.5rem;
+  height: .65rem;
+  background: #C4C4C4;
+  border: none;
+  font-size: .6rem;
+}
+
+.inputBoxes2 {
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.inputColumn2 {
+  margin-top: 1.7rem;
+}
+
+.marginHeader {
+  padding-top: 2.7rem;
+  margin-bottom: 1.4rem;
+  width: 20rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.projectValues {
+  display: flex;
+  flex-direction: row;
+  max-width: 1000rem;
+}
+
+.projects {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  height: 100rem;
+  align-items: center;
+  background: linear-gradient(162.82deg, rgba(255, 255, 255, 0.07) 5.77%, rgba(196, 196, 196, 0) 56.95%);
+}
+
+.projects > button {
+  margin-top: .75rem;
+}
+
+.valuesH {
+  width:73%;
+
+  background: #282828;
+}
+
+.values {
+  display: flex;
+  margin-left: 2rem;
+}
+
+.short {
+  width: 30rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+}

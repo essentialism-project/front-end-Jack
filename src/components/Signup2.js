@@ -21,13 +21,24 @@ class Signup2 extends React.Component {
     });
   };
 
+
+  //   signup2 = e => {
+  //   e.preventDefault();
+  //   this.props.addUser(this.props.newUserFirstName,this.props.newUserLastName,this.state.credentials.email,this.state.credentials.password).then(res => {
+  //     if (res) {
+  //       this.props.login(this.state.credentials.email,this.state.credentials.password);
+  //       // this.props.history.push('/protected');
+  //     }
+  //   });
+  // };
+
   signup2 = e => {
     e.preventDefault();
     this.props.addUser(this.props.newUserFirstName,this.props.newUserLastName,this.state.credentials.email,this.state.credentials.password)
     
     setTimeout(4000,this.props.login(this.state.credentials.email,this.state.credentials.password))
-    setTimeout(4000,this.props.getData)
-    this.props.history.push('/signup3');
+    setTimeout(8000,this.props.getData)
+    setTimeout(12000,this.props.history.push('/signup3'));
 
 
     console.log('newUserEmail: ', this.state.credentials.email)

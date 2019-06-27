@@ -71,9 +71,9 @@ class Signup3 extends React.Component {
   submitValues = (e) => {
     e.preventDefault();
     this.props.submitValues(this.state.selectedValues)
+    
+    this.props.updateUser({"personalvalues": [{...this.props.currentUser.personalvalues[0],"personalvalue": this.state.selectedValues[0] },{...this.props.currentUser.personalvalues[1],"personalvalue": this.state.selectedValues[1] },{...this.props.currentUser.personalvalues[2],"personalvalue": this.state.selectedValues[2] }]},this.props.currentUser.userid)
     this.props.history.push('/signup4');
-    setTimeout(2000,this.props.updateUser(this.props.currentUser))
-
     console.log('submitValues called')
   }
   

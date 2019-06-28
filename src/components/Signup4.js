@@ -22,7 +22,14 @@ class Signup4 extends React.Component {
     this.state.text2,
     this.state.text3,
     ]);
+
+    console.log(this.props.currentUser.userid)
+    this.props.updateUser({...this.props.currentUser,personalvalues: [{...this.props.currentUser.personalvalues[0],description:this.state.text1},{...this.props.currentUser.personalvalues[1],description:this.state.text2},{...this.props.currentUser.personalvalues[2],description:this.state.text3}]}
+    ,
+    {personalvalues: [{...this.props.currentUser.personalvalues[0],description:this.state.text1},{...this.props.currentUser.personalvalues[1],description:this.state.text2},{...this.props.currentUser.personalvalues[2],description:this.state.text3}]})
     this.props.history.push('/signup5')
+    
+    
   }
 
   handleInputChange = e => {

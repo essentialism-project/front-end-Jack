@@ -93,11 +93,11 @@ export const UPDATE_USER_START = 'UPDATE_USER_START';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
 
-export const updateUser = (user,id) => dispatch => {
+export const updateUser = (user,jso) => dispatch => {
   dispatch({ type: UPDATE_USER_START });
   console.log('UPDATING THIS USER:' , user)
   axiosWithAuth()
-  .put(`/users/user/${id}`, user )
+  .put(`/users/user/${user.userid}`, jso )
     .then(res => {
       console.log(res.data)
       dispatch({ type: UPDATE_USER_SUCCESS, payload: user });

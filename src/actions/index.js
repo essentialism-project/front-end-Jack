@@ -93,11 +93,11 @@ export const UPDATE_USER_START = 'UPDATE_USER_START';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
 
-export const updateUser = (user,id) => dispatch => {
+export const updateUser = (user,jso) => dispatch => {
   dispatch({ type: UPDATE_USER_START });
   console.log('UPDATING THIS USER:' , user)
   axiosWithAuth()
-  .put(`/users/user/${id}`, user )
+  .put(`/users/user/${user.userid}`, jso )
     .then(res => {
       console.log(res.data)
       dispatch({ type: UPDATE_USER_SUCCESS, payload: user });
@@ -105,6 +105,25 @@ export const updateUser = (user,id) => dispatch => {
     .catch(err => {
       console.log(err.response);
       dispatch({ type: UPDATE_USER_FAILURE, payload: [err.response,user] });
+    });
+};
+
+export const DELETE_USER_START = 'DELETE_USER_START';
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE';
+
+export const deleteUser = (id) => dispatch => {
+  dispatch({ type: DELETE_USER_START });
+  console.log('DELETING USER')
+  axiosWithAuth()
+  .delete(`/users/user/${id}`)
+    .then(res => {
+      console.log(res.data)
+      dispatch({ type: DELETE_USER_SUCCESS,});
+    })
+    .catch(err => {
+      console.log(err.response);
+      dispatch({ type: DELETE_USER_FAILURE, payload: [err.response] });
     });
 };
 
@@ -139,4 +158,25 @@ export const SUBMIT_PROJECTS = `SUBMIT_PROJECTS`;
 export const submitProjects = projects => dispatch => {
   console.log('payload: ', projects)
   dispatch({ type: SUBMIT_PROJECTS, payload: projects})
+}
+
+export const UPDATE_PROJECTS0 = `UPDATE_PROJECTS0`;
+
+export const updateProjects0 = (projects) => dispatch => {
+  console.log('payload: ', projects)
+  dispatch({ type: UPDATE_PROJECTS0, payload: projects})
+}
+
+export const UPDATE_PROJECTS1 = `UPDATE_PROJECTS1`;
+
+export const updateProjects1 = (projects) => dispatch => {
+  console.log('payload: ', projects)
+  dispatch({ type: UPDATE_PROJECTS1, payload: projects})
+}
+
+export const UPDATE_PROJECTS2 = `UPDATE_PROJECTS2`;
+
+export const updateProjects2 = (projects) => dispatch => {
+  console.log('payload: ', projects)
+  dispatch({ type: UPDATE_PROJECTS2, payload: projects})
 }

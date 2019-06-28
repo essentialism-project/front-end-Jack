@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { updateUser, submitProjects, getData } from '../actions'
+import { updateUser, submitProjects, getData, updateProjects0, updateProjects1, updateProjects2 } from '../actions'
   
 const defaultValues1 = [
   'Relationships with Family and Friends',
@@ -31,45 +31,117 @@ class Signup6 extends React.Component {
   
   state = {
     selectedProjects: [],
-    selectedButtons: [],
   }
 
-  selectValue = (e) => {
-    e.preventDefault();
-    if(this.state.selectedProjects.length > 2) {
-      console.log(this.state.selectedProjects[0])
-      
-      let reducedValues = this.state.selectedProjects.shift();
+  
 
-      this.setState({
-        selectedProjects: reducedValues,
-      })
-    }
+  selectProject = (e) => {
+    e.preventDefault();
     
-    e.target.classList.toggle('selected')
-    console.log(this.state.selectedButtons)
+
+
+    e.target.classList.toggle('selectedProject')
+    console.log(this.state.selectedProjects)
     console.log(e.target.className.substring(0,8))
     console.log(e.target.textContent)
     this.setState({
       selectedProjects: [...this.state.selectedProjects, e.target.textContent],
-      selectedButtons: [...this.state.selectedButtons, e.target.className.substring(0,8)]
     })
+   
+        if(!(e.target.classList.contains('selectedProject'))) {
+        this.setState({
+            selectedProjects: this.state.selectedProjects.filter(x => x!=e.target.textContent)
+        })
+    }
   }
 
-  submitProjects = (e) => {
-    e.preventDefault();
-    this.props.submitProjects(this.state.selectedProjects)
-    this.props.history.push('/signup4');
-    // setTimeout(2000,this.props.updateUser(this.props.currentUser))
 
-    console.log('submitProjects called')
+//   [{...this.props.currentUser.personalvalues[0],projects: [...this.props.currentUser.projects]}]})
+
+  submitProjects2 = (e) => {
+    e.preventDefault();
+
+    this.props.updateUser({...this.props.currentUser},{personalvalues: [{...this.props.currentUser.personalvalues[0]},{...this.props.currentUser.personalvalues[1]},{...this.props.currentUser.personalvalues[2],}]})
+
+    this.props.history.push('/protected/dashboard')
+  }
+
+  updateProjects0 = (projects) => {
+    this.props.updateProjects0(projects)
+  }
+
+  updateProjects1 = (projects) => {
+    this.props.updateProjects1(projects)
+  }
+
+  updateProjects2 = (projects) => {
+    this.props.updateProjects2(projects)
   }
   
+  sortProjects0 = (e) => {
+    e.preventDefault();
+      const node = ReactDOM.findDOMNode(this);
+      // Get child nodes
+      if (node instanceof HTMLElement) {
+         const children = node.querySelectorAll(`.selectedProject`)
+         console.log(children);
+         children.forEach(child => child.classList.toggle('selectedProject'))
+         children.forEach(child => child.classList.toggle('displayNone'))
+      //    children.forEach(child => this.setState({selectedProjects: [...this.state.selectedProjects, e.target.textContent.substring(0,8)]}))
+      // //    children.forEach(child => ))
+      }
+
+      let uniqueArray = [...new Set(this.state.selectedProjects)].map(item => {return {projectname: item}})
+      this.updateProjects0(uniqueArray)
+      this.setState({
+        selectedProjects: []
+    })
+}
+
+sortProjects1 = (e) => {
+    e.preventDefault();
+      const node = ReactDOM.findDOMNode(this);
+      // Get child nodes
+      if (node instanceof HTMLElement) {
+         const children = node.querySelectorAll(`.selectedProject`)
+         console.log(children);
+         children.forEach(child => child.classList.toggle('selectedProject'))
+         children.forEach(child => child.classList.toggle('displayNone'))
+      //    children.forEach(child => this.setState({selectedProjects: [...this.state.selectedProjects, e.target.textContent.substring(0,8)]}))
+      // //    children.forEach(child => ))
+      }
+
+      let uniqueArray = [...new Set(this.state.selectedProjects)].map(item => {return {projectname: item}})
+      this.updateProjects1(uniqueArray)
+      this.setState({
+          selectedProjects: []
+      })
+}
+
+sortProjects2 = (e) => {
+    e.preventDefault(); 
+      const node = ReactDOM.findDOMNode(this);
+      // Get child nodes
+      if (node instanceof HTMLElement) {
+         const children = node.querySelectorAll(`.selectedProject`)
+         console.log(children);
+         children.forEach(child => child.classList.toggle('selectedProject'))
+         children.forEach(child => child.classList.toggle('displayNone'))
+      //    children.forEach(child => this.setState({selectedProjects: [...this.state.selectedProjects, e.target.textContent.substring(0,8)]}))
+      // //    children.forEach(child => ))
+      }
+    
+      let uniqueArray = [...new Set(this.state.selectedProjects)].map(item => {return {projectname: item}})
+      this.updateProjects2(uniqueArray)
+      this.setState({
+        selectedProjects: []
+    })
+}
 
   render() {
       console.log(this.props.currentUser)
     return (
-      <div className = 'lightGrey'>
+      <div className = 'darkGrey'>
         
         <div className = 'projectValues'>
             <div className = 'projects'>{this.props.currentUser.personalvalues[3].projects.map((project,i) => {if(project.projectname) {return <button onClick = {this.selectProject} key = {i} className = {'projectInput'} >{project.projectname}</button>}})}</div>
@@ -77,24 +149,26 @@ class Signup6 extends React.Component {
             <h3 className = 'white short'>Now let’s organize your project into your top three values. Which of your projects help you build your relationships with family and friends value?</h3>
                 <div className = 'values'>
                     <div className = 'inputColumn'>
-                      <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[0].personalvalue}</button>
-                      <div className = 'inputBox'><textarea name = 'text1' onChange={this.handleInputChange} value = {this.state.text1} className = 'input'></textarea></div>
+                        <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[0].personalvalue}</button>
+                        <div className = 'projectsDiv'>{this.props.currentUser.personalvalues[0].projects.map((project,i) => {return <button className = {'projectInput'}>{project.projectname}</button>} )}</div>
+                        <button onClick = {this.sortProjects0} className = 'addSelectedButton' > Add Selected Projects to {this.props.currentUser.personalvalues[0].personalvalue}</button>
                     </div>
                     <div className = 'inputColumn'>
-                      <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[1].personalvalue}</button>
-                      <div className = 'inputBox'><textarea name = 'text2' onChange={this.handleInputChange} value = {this.state.text2} className = 'input'></textarea></div>
+                        <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[1].personalvalue}</button>
+                        <div className = 'projectsDiv'>{this.props.currentUser.personalvalues[1].projects.map((project,i) => {return <button className = {'projectInput'}>{project.projectname}</button>} )}</div>
+                        <button onClick = {this.sortProjects1} className = 'addSelectedButton' > Add Selected Projects to {this.props.currentUser.personalvalues[1].personalvalue}</button>
                     </div>
                     <div className = 'inputColumn'>
-    
-                    <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[2].personalvalue}</button>
-                    <div className = 'inputBox'><textarea name = 'text3' onChange={this.handleInputChange} value = {this.state.text3} className = 'input'></textarea></div>
+                        <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[2].personalvalue}</button>
+                        <div className = 'projectsDiv'>{this.props.currentUser.personalvalues[2].projects.map((project,i) => {return <button className = {'projectInput'}>{project.projectname}</button>} )}</div>
+                        <button onClick = {this.sortProjects2} className = 'addSelectedButton' > Add Selected Projects to {this.props.currentUser.personalvalues[2].personalvalue}</button>
                     </div>
                 </div>
             </div>
         </div>
         <div className = 'signUpNav'>
           <button>back</button>
-          <button onClick = {this.submitProjects}>next</button>
+          <button onClick = {this.submitProjects2}>next</button>
         </div>
       </div>
     );
@@ -109,5 +183,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { updateUser, getData, submitProjects }
+  { updateUser, getData, submitProjects, updateProjects0, updateProjects1, updateProjects2 }
 )(Signup6);

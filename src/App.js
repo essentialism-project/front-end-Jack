@@ -9,45 +9,60 @@ import Signup3 from './components/Signup3';
 import Signup4 from './components/Signup4';
 import Signup5 from './components/Signup5';
 import Signup6 from './components/Signup6';
+import Dashboard from './components/Dashboard'
 import PrivateRoute from './components/PrivateRoute';
+import { getData} from './actions';
+import { connect } from 'react-redux';
 import './App.css'
 
 
 
-function App() {
-  // localStorage.clear()
-  return (
-    <Router>
-      <div className="App">
-        <div className = 'navContainer'>
-          <span>Essentialism</span>
-          <nav>
-            
-              <NavLink className = 'navLink' to="/login">Login</NavLink>
-            
-            
-              <NavLink className = 'navLink' to="/signup1">Sign Up</NavLink>
-            
-            
-              <NavLink className = 'navLink' to="/protected">Home Page</NavLink>
-            
-            
-              <NavLink className = 'navLink' to="/signup3">Update Your Profile</NavLink>
-            
-          </nav>
+class App extends React.Component {
+
+
+
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <div className = 'navContainer'>
+            <span>Essentialism</span>
+            <nav>
+
+                <NavLink onCLick = {() => this.props.getData()} className = 'navLink' to="/login">Login</NavLink>
+
+
+                <NavLink onCLick = {() => this.props.getData()} className = 'navLink' to="/signup1">Sign Up</NavLink>
+
+
+                <NavLink className = 'navLink' to="/protected/dashboard">Dashboard</NavLink>
+
+
+                <NavLink className = 'navLink' to="/protected/signup3">Update Your Profile</NavLink>
+
+            </nav>
+          </div>
+          <Route path="/login" component={Login} />
+          <Route exact path="/signup1" component={Signup1} />
+          <Route exact path="/signup2" component={Signup2} />
+          <PrivateRoute exact path="/protected/signup3" component={Signup3} />
+          <PrivateRoute exact path="/protected/signup4" component={Signup4} />
+          <PrivateRoute exact path="/protected/signup5" component={Signup5} />
+          <PrivateRoute exact path="/protected/signup6" component={Signup6} />
+          <PrivateRoute exact path="/protected/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/protected" component={HomePage} />
+          <PrivateRoute exact path="/protected/update" component={UpdateSelf} />
         </div>
-        <Route path="/login" component={Login} />
-        <Route exact path="/signup1" component={Signup1} />
-        <Route exact path="/signup2" component={Signup2} />
-        <Route exact path="/signup3" component={Signup3} />
-        <Route exact path="/signup4" component={Signup4} />
-        <Route exact path="/signup5" component={Signup5} />
-        <Route exact path="/signup6" component={Signup6} />
-        <PrivateRoute exact path="/protected" component={HomePage} />
-        <PrivateRoute exact path="/protected/update" component={UpdateSelf} />
-      </div>
-    </Router>
-  );
+      </Router>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  currentUser: state.currentUser,
+});
+
+export default connect(
+mapStateToProps,
+{ getData }
+)(App);

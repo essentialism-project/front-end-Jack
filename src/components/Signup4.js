@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateUser, submitText } from '../actions'
+import { updateUser, submitText, getData } from '../actions'
 
 class Signup4 extends React.Component {
 
@@ -22,7 +22,14 @@ class Signup4 extends React.Component {
     this.state.text2,
     this.state.text3,
     ]);
-    this.props.history.push('/signup5')
+
+    console.log(this.props.currentUser.userid)
+    this.props.updateUser({...this.props.currentUser,personalvalues: [{...this.props.currentUser.personalvalues[0],description:this.state.text1},{...this.props.currentUser.personalvalues[1],description:this.state.text2},{...this.props.currentUser.personalvalues[2],description:this.state.text3}]}
+    ,
+    {personalvalues: [{...this.props.currentUser.personalvalues[0],description:this.state.text1},{...this.props.currentUser.personalvalues[1],description:this.state.text2},{...this.props.currentUser.personalvalues[2],description:this.state.text3}]})
+    this.props.history.push('/protected/signup5')
+    
+    
   }
 
   handleInputChange = e => {
@@ -30,6 +37,7 @@ class Signup4 extends React.Component {
   };
 
   render() {
+  
     return (
       <div className = 'lightGrey'>
         <h1 className = 'greyHeader'>In a few sentences, describe why the selected values are important to you.</h1>
@@ -64,5 +72,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { updateUser, submitText }
+  { updateUser, submitText, getData }
 )(Signup4);

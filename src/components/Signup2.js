@@ -36,9 +36,8 @@ class Signup2 extends React.Component {
     e.preventDefault();
     this.props.addUser(this.props.newUserFirstName,this.props.newUserLastName,this.state.credentials.email,this.state.credentials.password)
     
-    setTimeout(4000,this.props.login(this.state.credentials.email,this.state.credentials.password))
-    setTimeout(8000,this.props.getData)
-    setTimeout(12000,this.props.history.push('/signup3'));
+    this.props.login(this.state.credentials.email,this.state.credentials.password)
+    this.props.history.push('/login')
 
 
     console.log('newUserEmail: ', this.state.credentials.email)
@@ -47,28 +46,32 @@ class Signup2 extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.signup2}>
-          <input
-            type="text"
-            name="email"
-            value={this.state.credentials.email}
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            value={this.state.credentials.password}
-            onChange={this.handleChange}
-          />
-          <button>
-            {this.props.addingUser ? (
-              <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
-            ) : (
-              'Sign Up'
-            )}
-          </button>
-        </form>
+      <div className = 'darkGrey2'>
+        <div className = 'loginBox'>
+          <form onSubmit={this.signup2}>
+            <input
+              type="text"
+              name="email"
+              placeholder = 'Email'
+              value={this.state.credentials.email}
+              onChange={this.handleChange}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder = 'Password'
+              value={this.state.credentials.password}
+              onChange={this.handleChange}
+            />
+            <button onCLick = {this.props.getData}>
+              {this.props.addingUser ? (
+                <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+              ) : (
+                'Sign Up'
+              )}
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

@@ -19,6 +19,9 @@ import {
     SUBMIT_VALUES,
     SUBMIT_TEXT,
     SUBMIT_PROJECTS,
+    UPDATE_PROJECTS0,
+    UPDATE_PROJECTS1,
+    UPDATE_PROJECTS2
     } from '../actions/index';
     
     const initialState = {
@@ -142,6 +145,47 @@ import {
                 personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3], projects: action.payload}]
               }
           }
+          case UPDATE_PROJECTS0:
+          return {
+              ...state, 
+              currentUser: {
+                ...state.currentUser,
+                personalvalues: [{...state.currentUser.personalvalues[0],projects:[...state.currentUser.personalvalues[0].projects].concat(action.payload)},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3]}]
+              }
+          }
+          case UPDATE_PROJECTS1:
+          return {
+              ...state, 
+              currentUser: {
+                ...state.currentUser,
+                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1],projects:[...state.currentUser.personalvalues[1].projects].concat(action.payload)},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3]}]
+              }
+          }
+          case UPDATE_PROJECTS2:
+          return {
+              ...state, 
+              currentUser: {
+                ...state.currentUser,
+                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2],projects:[...state.currentUser.personalvalues[2].projects].concat(action.payload)},{...state.currentUser.personalvalues[3]}]
+              }
+          }
+          case DELETE_USER_START:
+            return {
+              ...state,
+              deletingUser: true,
+            };
+          case DELETE_USER_SUCCESS:
+              return {
+                ...state,
+                deletingUser: false,
+                currentUser: {}
+              };
+          case DELETE_USER_FAILURE:
+              return {
+                ...state,
+                deletingUser: false,
+                error: action.payload,
+              };
         default:
             return state;
       }

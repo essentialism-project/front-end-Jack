@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateUser, submitProjects } from '../actions'
+import { updateUser, submitProjects, getData } from '../actions'
 
 class Signup5 extends React.Component {
-
 
   constructor(props) {
     super(props);
@@ -42,8 +41,7 @@ class Signup5 extends React.Component {
   submitProjects = event => {
     event.preventDefault();
 
-    this.props.submitProjects([
-    {projectname: this.state.personal1},
+    let projectsArray =     [{projectname: this.state.personal1},
     {projectname: this.state.personal2},
     {projectname: this.state.personal3},
     {projectname: this.state.personal4},
@@ -71,8 +69,18 @@ class Signup5 extends React.Component {
     {projectname: this.state.hobbies5},
     {projectname: this.state.hobbies6},
     {projectname: this.state.hobbies7},
-    ]);
-    this.props.history.push('/signup6')
+    ];
+
+    this.props.submitProjects(projectsArray);
+    this.props.history.push('/protected/signup6')
+
+    //Object not built to specs, can't axios.put here - I'll just store this bit on state.
+
+    // this.props.updateUser({...this.props.currentUser, personalvalues: [{...this.props.currentUser.personalvalues[0]},{...this.props.currentUser.personalvalues[1]},{...this.props.currentUser.personalvalues[2]},{...this.props.currentUser.personalvalues[3],projects:projectsArray}]}
+    // ,
+    // {personalvalues: [{...this.props.currentUser.personalvalues[0]},{...this.props.currentUser.personalvalues[1]},{...this.props.currentUser.personalvalues[2]},{...this.props.currentUser.personalvalues[3],projects:projectsArray}]}
+    // )
+
   }
 
   handleInputChange = e => {
@@ -151,5 +159,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { updateUser, submitProjects }
+  { updateUser, submitProjects, getData }
 )(Signup5);

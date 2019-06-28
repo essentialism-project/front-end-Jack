@@ -1,0 +1,235 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navContainer {
+  background: #E5E5E5;
+  display: flex;
+  height: 1.5rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  margin-left: 49%;
+  background: #E5E5E5;
+}
+
+.navLink {
+  text-decoration: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  color: #565656;
+  font-size: .85rem;
+}
+
+.lightGrey {
+left: 100%;
+right: -100%;
+top: 0%;
+bottom: 0%;
+margin: 0;
+width: 100%;
+height: 50rem;
+
+background: radial-gradient(698.36px at 50% 50%, #6D6D6D 0%, #363636 59.63%, #282828 100%);
+/* transform: matrix(-1, 0, 0, 1, 0, 0); */
+}
+
+.valueContainer {
+  display: flex; 
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.valueColumn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 22rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.valueButton {
+  background: #C4C4C4;
+  width: 13rem;
+  box-shadow: inset 13.0476px -13.0476px 21.746px rgba(0, 0, 0, 0.42), inset -13.0476px 13.0476px 17.3968px rgba(255, 255, 255, 0.72);
+  border-radius: 18.2666px;
+  height: 3.75rem;
+  
+}
+
+.selected {
+  background: #00897B;
+}
+
+.white {
+  color: white;
+  font-weight: normal;
+}
+
+h1 {
+  padding-top: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.greyHeader {
+  color: #DADADA;
+  font-weight: normal;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.darkGreyHeader {
+  color: rgba(255, 255, 255, 0.41);
+  font-weight: normal;
+  width: 72%;
+  margin: .4rem auto;
+
+}
+
+span {
+  width: 7%;
+  margin-left: 1rem;
+  margin-top: .15rem;
+}
+
+.signUpNav {
+  display: flex;
+  justify-content: space-between;
+  width: 44%;
+  margin-left: 28%;
+  margin-top: 3rem;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.inputColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 19rem;
+  margin-top: 1rem;
+}
+
+.inputBox {
+  background: linear-gradient(138.26deg, rgba(255, 255, 255, 0.24) 5.77%, rgba(196, 196, 196, 0) 56.95%);
+  height: 14rem;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  height: 10rem;
+  color: white;
+}
+
+.projectInput {
+  width: 5.5rem;
+  height: .65rem;
+  background: #C4C4C4;
+  border: none;
+  font-size: .6rem;
+}
+
+.inputBoxes2 {
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.inputColumn2 {
+  margin-top: 1.7rem;
+}
+
+.marginHeader {
+  padding-top: 2.7rem;
+  margin-bottom: 1.4rem;
+  width: 20rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.projectValues {
+  display: flex;
+  flex-direction: row;
+  max-width: 1000rem;
+}
+
+.projects {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  height: 100rem;
+  align-items: center;
+  background: linear-gradient(162.82deg, rgba(255, 255, 255, 0.07) 5.77%, rgba(196, 196, 196, 0) 56.95%);
+}
+
+.projects > button {
+  margin-top: .75rem;
+}
+
+.valuesH {
+  width:73%;
+
+  background: #282828;
+}
+
+.values {
+  display: flex;
+  margin-left: 2rem;
+}
+
+.short {
+  width: 30rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+}

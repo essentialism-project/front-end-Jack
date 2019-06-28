@@ -35,27 +35,31 @@ class Signup1 extends React.Component {
   render() {
     return (
       <div className = 'darkGrey2'>
-        <form onSubmit={this.signup1}>
-          <input
-            type="text"
-            name="firstName"
-            value={this.state.credentials.firstName}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            name="lastName"
-            value={this.state.credentials.lastName}
-            onChange={this.handleChange}
-          />
-          <button>
-            {this.props.addingUser ? (
-              <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
-            ) : (
-              'Continue'
-            )}
-          </button>
-        </form>
+        <div className = 'loginBox'>
+          <form onSubmit={this.signup1}>
+            <input
+              type="text"
+              name="firstName"
+              placeholder = 'First Name'
+              value={this.state.credentials.firstName}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder = 'Last Name'
+              value={this.state.credentials.lastName}
+              onChange={this.handleChange}
+            />
+            <button>
+              {this.props.addingUser ? (
+                <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+              ) : (
+                'Continue'
+              )}
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

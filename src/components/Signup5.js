@@ -42,8 +42,7 @@ class Signup5 extends React.Component {
   submitProjects = event => {
     event.preventDefault();
 
-    this.props.submitProjects([
-    {projectname: this.state.personal1},
+    let projectsArray =     [{projectname: this.state.personal1},
     {projectname: this.state.personal2},
     {projectname: this.state.personal3},
     {projectname: this.state.personal4},
@@ -71,8 +70,18 @@ class Signup5 extends React.Component {
     {projectname: this.state.hobbies5},
     {projectname: this.state.hobbies6},
     {projectname: this.state.hobbies7},
-    ]);
+    ];
+
+    this.props.submitProjects(projectsArray);
     this.props.history.push('/signup6')
+
+    //Object not built to specs, can't axios.put here - I'll just store this bit on state.
+
+    // this.props.updateUser({...this.props.currentUser, personalvalues: [{...this.props.currentUser.personalvalues[0]},{...this.props.currentUser.personalvalues[1]},{...this.props.currentUser.personalvalues[2]},{...this.props.currentUser.personalvalues[3],projects:projectsArray}]}
+    // ,
+    // {personalvalues: [{...this.props.currentUser.personalvalues[0]},{...this.props.currentUser.personalvalues[1]},{...this.props.currentUser.personalvalues[2]},{...this.props.currentUser.personalvalues[3],projects:projectsArray}]}
+    // )
+
   }
 
   handleInputChange = e => {

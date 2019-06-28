@@ -97,6 +97,14 @@ background: radial-gradient(698.36px at 50% 50%, #6D6D6D 0%, #363636 59.63%, #28
   
 }
 
+.addSelectedButton {
+  height: 3.75rem;
+  width: 11rem;
+  font-size: .75rem;
+  margin-top: 1.5rem;
+  border-radius: 18.2666px;
+}
+
 .selected {
   background: #00897B;
 }
@@ -232,4 +240,9 @@ span {
   width: 30rem;
   margin: 0 auto;
   margin-top: 1rem;
+}
+
+.projectsDiv {
+  height: 20rem;
+  width: 30%;
 }

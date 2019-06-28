@@ -31,20 +31,10 @@ class Signup6 extends React.Component {
   
   state = {
     selectedProjects: [],
-    selectedButtons: [],
   }
 
-  selectValue = (e) => {
+  selectProject = (e) => {
     e.preventDefault();
-    if(this.state.selectedProjects.length > 2) {
-      console.log(this.state.selectedProjects[0])
-      
-      let reducedValues = this.state.selectedProjects.shift();
-
-      this.setState({
-        selectedProjects: reducedValues,
-      })
-    }
     
     e.target.classList.toggle('selected')
     console.log(this.state.selectedButtons)
@@ -52,7 +42,6 @@ class Signup6 extends React.Component {
     console.log(e.target.textContent)
     this.setState({
       selectedProjects: [...this.state.selectedProjects, e.target.textContent],
-      selectedButtons: [...this.state.selectedButtons, e.target.className.substring(0,8)]
     })
   }
 
@@ -77,17 +66,19 @@ class Signup6 extends React.Component {
             <h3 className = 'white short'>Now let’s organize your project into your top three values. Which of your projects help you build your relationships with family and friends value?</h3>
                 <div className = 'values'>
                     <div className = 'inputColumn'>
-                      <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[0].personalvalue}</button>
-                      <div className = 'inputBox'><textarea name = 'text1' onChange={this.handleInputChange} value = {this.state.text1} className = 'input'></textarea></div>
+                        <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[0].personalvalue}</button>
+                        <div className = 'projectsDiv'>{this.props.currentUser.personalvalues[0].projects.map((project,i) => {return <button className = {'projectInput'}>{project.projectname}</button>} )}</div>
+                        <button className = 'addSelectedButton' > Add Selected Projects to {this.props.currentUser.personalvalues[0].personalvalue}</button>
                     </div>
                     <div className = 'inputColumn'>
-                      <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[1].personalvalue}</button>
-                      <div className = 'inputBox'><textarea name = 'text2' onChange={this.handleInputChange} value = {this.state.text2} className = 'input'></textarea></div>
+                        <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[1].personalvalue}</button>
+                        <div className = 'projectsDiv'>{this.props.currentUser.personalvalues[1].projects.map((project,i) => {return <button className = {'projectInput'}>{project.projectname}</button>} )}</div>
+                        <button className = 'addSelectedButton' > Add Selected Projects to {this.props.currentUser.personalvalues[1].personalvalue}</button>
                     </div>
                     <div className = 'inputColumn'>
-    
-                    <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[2].personalvalue}</button>
-                    <div className = 'inputBox'><textarea name = 'text3' onChange={this.handleInputChange} value = {this.state.text3} className = 'input'></textarea></div>
+                        <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[2].personalvalue}</button>
+                        <div className = 'projectsDiv'>{this.props.currentUser.personalvalues[2].projects.map((project,i) => {return <button className = {'projectInput'}>{project.projectname}</button>} )}</div>
+                        <button className = 'addSelectedButton' > Add Selected Projects to {this.props.currentUser.personalvalues[2].personalvalue}</button>
                     </div>
                 </div>
             </div>

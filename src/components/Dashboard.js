@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
                 <div className = 'inputColumn'>
                     <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[0].personalvalue}</button>
                     <div className = 'projectsDiv'>{this.props.currentUser.personalvalues[0].projects.map((project,i) => {return <button className = {'projectInput'}>{project.projectname}</button>} )}</div>
-                    <button onClick = {this.updateValues} className = 'addSelectedButton' > Second thoughts about your value choices? Let's start from scratch. {this.props.currentUser.personalvalues[0].personalvalue}</button>
+                    <button onClick = {this.updateValues} className = 'addSelectedButton' > Second thoughts about your value choices? Let's start from scratch. </button>
                 </div>
                 <div className = 'inputColumn'>
                     <button className = 'valueButton selected' >{this.props.currentUser.personalvalues[1].personalvalue}</button>

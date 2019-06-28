@@ -17,9 +17,17 @@ import './App.css'
 
 
 
+
+
 class App extends React.Component {
 
+  componentDidMount() {
+    this.props.getData()
+  }
 
+  logout = () => {
+    localStorage.clear()
+  }
 
   render() {
     return (
@@ -29,16 +37,11 @@ class App extends React.Component {
             <span>Essentialism</span>
             <nav>
 
-                <NavLink onCLick = {() => this.props.getData()} className = 'navLink' to="/login">Login</NavLink>
-
-
-                <NavLink onCLick = {() => this.props.getData()} className = 'navLink' to="/signup1">Sign Up</NavLink>
-
-
+                <NavLink className = 'navLink' to="/login">Login</NavLink>
+                <NavLink className = 'navLink' to="/signup1">Sign Up</NavLink>
                 <NavLink className = 'navLink' to="/protected/dashboard">Dashboard</NavLink>
-
-
                 <NavLink className = 'navLink' to="/protected/signup3">Update Your Profile</NavLink>
+                <button onClick = {this.logout}>Log Out</button>
 
             </nav>
           </div>

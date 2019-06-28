@@ -105,9 +105,6 @@ background: radial-gradient(698.36px at 50% 50%, #6D6D6D 0%, #363636 59.63%, #28
   border-radius: 18.2666px;
 }
 
-.selected {
-  background: #00897B;
-}
 
 .white {
   color: white;
@@ -245,4 +242,17 @@ span {
 .projectsDiv {
   height: 20rem;
   width: 30%;
+}
+
+
+.selected {
+  background: #00897B;
+}
+
+.selectedProject {
+  background: #00897B;
+}
+
+.displayNone {
+  display: none;
 }

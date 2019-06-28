@@ -140,3 +140,24 @@ export const submitProjects = projects => dispatch => {
   console.log('payload: ', projects)
   dispatch({ type: SUBMIT_PROJECTS, payload: projects})
 }
+
+export const UPDATE_PROJECTS0 = `UPDATE_PROJECTS0`;
+
+export const updateProjects0 = (projects) => dispatch => {
+  console.log('payload: ', projects)
+  dispatch({ type: UPDATE_PROJECTS0, payload: projects})
+}
+
+export const UPDATE_PROJECTS1 = `UPDATE_PROJECTS1`;
+
+export const updateProjects1 = (projects) => dispatch => {
+  console.log('payload: ', projects)
+  dispatch({ type: UPDATE_PROJECTS1, payload: projects})
+}
+
+export const UPDATE_PROJECTS2 = `UPDATE_PROJECTS2`;
+
+export const updateProjects2 = (projects) => dispatch => {
+  console.log('payload: ', projects)
+  dispatch({ type: UPDATE_PROJECTS2, payload: projects})
+}

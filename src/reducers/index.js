@@ -19,6 +19,9 @@ import {
     SUBMIT_VALUES,
     SUBMIT_TEXT,
     SUBMIT_PROJECTS,
+    UPDATE_PROJECTS0,
+    UPDATE_PROJECTS1,
+    UPDATE_PROJECTS2
     } from '../actions/index';
     
     const initialState = {
@@ -135,6 +138,30 @@ import {
               }
           }
         case SUBMIT_PROJECTS:
+          return {
+              ...state, 
+              currentUser: {
+                ...state.currentUser,
+                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3], projects: action.payload}]
+              }
+          }
+          case UPDATE_PROJECTS0:
+          return {
+              ...state, 
+              currentUser: {
+                ...state.currentUser,
+                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3], projects: action.payload}]
+              }
+          }
+          case UPDATE_PROJECTS1:
+          return {
+              ...state, 
+              currentUser: {
+                ...state.currentUser,
+                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3], projects: action.payload}]
+              }
+          }
+          case UPDATE_PROJECTS2:
           return {
               ...state, 
               currentUser: {

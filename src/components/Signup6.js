@@ -61,27 +61,21 @@ class Signup6 extends React.Component {
     e.preventDefault();
     this.props.submitProjects(this.state.selectedProjects)
 
-    // setTimeout(2000,this.props.updateUser(this.props.currentUser))
+    this.props.updateUser({...this.props.currentUser,})
 
-    console.log('submitProjects called')
+    this.props.history.push('/dashboard')
   }
 
   updateProjects0 = (projects) => {
     this.props.updateProjects0(projects)
-
-    console.log('submitProjects called')
   }
 
   updateProjects1 = (projects) => {
     this.props.updateProjects1(projects)
-
-    console.log('submitProjects called')
   }
 
   updateProjects2 = (projects) => {
     this.props.updateProjects2(projects)
-
-    console.log('submitProjects called')
   }
   
   sortProjects0 = (e) => {

@@ -150,7 +150,7 @@ import {
               ...state, 
               currentUser: {
                 ...state.currentUser,
-                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3], projects: action.payload}]
+                personalvalues: [{...state.currentUser.personalvalues[0],projects:[...state.currentUser.personalvalues[0].projects].concat(action.payload)},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3]}]
               }
           }
           case UPDATE_PROJECTS1:
@@ -158,7 +158,7 @@ import {
               ...state, 
               currentUser: {
                 ...state.currentUser,
-                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3], projects: action.payload}]
+                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1],projects:[...state.currentUser.personalvalues[1].projects].concat(action.payload)},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3]}]
               }
           }
           case UPDATE_PROJECTS2:
@@ -166,7 +166,7 @@ import {
               ...state, 
               currentUser: {
                 ...state.currentUser,
-                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2]},{...state.currentUser.personalvalues[3], projects: action.payload}]
+                personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2],projects:[...state.currentUser.personalvalues[2].projects].concat(action.payload)},{...state.currentUser.personalvalues[3]}]
               }
           }
         default:

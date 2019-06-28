@@ -56,14 +56,14 @@ class Signup6 extends React.Component {
   }
 
 
+//   [{...this.props.currentUser.personalvalues[0],projects: [...this.props.currentUser.projects]}]})
 
-  submitProjects = (e) => {
+  submitProjects2 = (e) => {
     e.preventDefault();
-    this.props.submitProjects(this.state.selectedProjects)
 
-    this.props.updateUser({...this.props.currentUser,})
+    this.props.updateUser({...this.props.currentUser},{personalvalues: [{...this.props.currentUser.personalvalues[0]},{...this.props.currentUser.personalvalues[1]},{...this.props.currentUser.personalvalues[2],}]})
 
-    this.props.history.push('/dashboard')
+    this.props.history.push('/protected/dashboard')
   }
 
   updateProjects0 = (projects) => {
@@ -141,7 +141,7 @@ sortProjects2 = (e) => {
   render() {
       console.log(this.props.currentUser)
     return (
-      <div className = 'lightGrey'>
+      <div className = 'darkGrey'>
         
         <div className = 'projectValues'>
             <div className = 'projects'>{this.props.currentUser.personalvalues[3].projects.map((project,i) => {if(project.projectname) {return <button onClick = {this.selectProject} key = {i} className = {'projectInput'} >{project.projectname}</button>}})}</div>
@@ -168,7 +168,7 @@ sortProjects2 = (e) => {
         </div>
         <div className = 'signUpNav'>
           <button>back</button>
-          <button onClick = {this.submitProjects}>next</button>
+          <button onClick = {this.submitProjects2}>next</button>
         </div>
       </div>
     );

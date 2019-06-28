@@ -169,6 +169,23 @@ import {
                 personalvalues: [{...state.currentUser.personalvalues[0]},{...state.currentUser.personalvalues[1]},{...state.currentUser.personalvalues[2],projects:[...state.currentUser.personalvalues[2].projects].concat(action.payload)},{...state.currentUser.personalvalues[3]}]
               }
           }
+          case DELETE_USER_START:
+            return {
+              ...state,
+              deletingUser: true,
+            };
+          case DELETE_USER_SUCCESS:
+              return {
+                ...state,
+                deletingUser: false,
+                currentUser: {}
+              };
+          case DELETE_USER_FAILURE:
+              return {
+                ...state,
+                deletingUser: false,
+                error: action.payload,
+              };
         default:
             return state;
       }

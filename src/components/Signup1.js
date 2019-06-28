@@ -34,7 +34,7 @@ class Signup1 extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className = 'darkGrey2'>
         <form onSubmit={this.signup1}>
           <input
             type="text"

@@ -72,8 +72,8 @@ class Signup3 extends React.Component {
     e.preventDefault();
     this.props.submitValues(this.state.selectedValues)
     
-    this.props.updateUser({...this.props.currentUser,"personalvalues": [{...this.props.currentUser.personalvalues[0],"personalvalue": this.state.selectedValues[0] },{...this.props.currentUser.personalvalues[1],"personalvalue": this.state.selectedValues[1] },{...this.props.currentUser.personalvalues[2],"personalvalue": this.state.selectedValues[2] }]},{"personalvalues": [{...this.props.currentUser.personalvalues[0],"personalvalue": this.state.selectedValues[0] },{...this.props.currentUser.personalvalues[1],"personalvalue": this.state.selectedValues[1] },{...this.props.currentUser.personalvalues[2],"personalvalue": this.state.selectedValues[2] }]})
-    this.props.history.push('/signup4');
+    this.props.updateUser({...this.props.currentUser,"personalvalues": [{...this.props.currentUser.personalvalues[0], projects: [], "personalvalue": this.state.selectedValues[0] },{...this.props.currentUser.personalvalues[1], projects: [], "personalvalue": this.state.selectedValues[1] },{...this.props.currentUser.personalvalues[2], projects: [], "personalvalue": this.state.selectedValues[2] }]},{"personalvalues": [{...this.props.currentUser.personalvalues[0], projects: [], "personalvalue": this.state.selectedValues[0] },{...this.props.currentUser.personalvalues[1], projects: [], "personalvalue": this.state.selectedValues[1] },{...this.props.currentUser.personalvalues[2], projects: [], "personalvalue": this.state.selectedValues[2] }]})
+    this.props.history.push('/protected/signup4');
     console.log('submitValues called')
   }
   

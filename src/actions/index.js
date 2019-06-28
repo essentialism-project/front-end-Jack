@@ -108,6 +108,25 @@ export const updateUser = (user,jso) => dispatch => {
     });
 };
 
+export const DELETE_USER_START = 'DELETE_USER_START';
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE';
+
+export const deleteUser = (id) => dispatch => {
+  dispatch({ type: DELETE_USER_START });
+  console.log('DELETING USER')
+  axiosWithAuth()
+  .delete(`/users/user/${id}`)
+    .then(res => {
+      console.log(res.data)
+      dispatch({ type: DELETE_USER_SUCCESS,});
+    })
+    .catch(err => {
+      console.log(err.response);
+      dispatch({ type: DELETE_USER_FAILURE, payload: [err.response] });
+    });
+};
+
 export const SIGNUP1 = `SIGNUP1`;
 
 export const signup1 = creds => dispatch => {

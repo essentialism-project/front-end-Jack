@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateUser, submitProjects } from '../actions'
+import { updateUser, submitProjects, getData } from '../actions'
 
 class Signup5 extends React.Component {
-
 
   constructor(props) {
     super(props);
@@ -73,7 +72,7 @@ class Signup5 extends React.Component {
     ];
 
     this.props.submitProjects(projectsArray);
-    this.props.history.push('/signup6')
+    this.props.history.push('/protected/signup6')
 
     //Object not built to specs, can't axios.put here - I'll just store this bit on state.
 
@@ -160,5 +159,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { updateUser, submitProjects }
+  { updateUser, submitProjects, getData }
 )(Signup5);

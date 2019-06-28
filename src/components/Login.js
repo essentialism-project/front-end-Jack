@@ -26,14 +26,14 @@ class Login extends React.Component {
     this.props.login(this.state.credentials.username,this.state.credentials.password).then(res => {
       if (res) {
         this.props.getData();
-        this.props.history.push('/protected');
-      }
+        this.props.history.push('/protected/signup3')
+        }
     });
   };
 
   render() {
     return (
-      <div>
+      <div className = 'darkGrey2'>
         <form onSubmit={this.login}>
           <input
             type="text"
@@ -63,7 +63,8 @@ class Login extends React.Component {
 
 const mapStateToProps = state => ({
   error: state.error,
-  loggingIn: state.loggingIn
+  loggingIn: state.loggingIn,
+  currentUser: state.currentUser
 });
 
 export default connect(

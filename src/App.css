@@ -140,10 +140,17 @@ span {
 
 .signUpNav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 44%;
-  margin-left: 28%;
+  margin: 0 auto;
   margin-top: 3rem;
+  margin-left: 35%;
+}
+
+.signUpNav > button {
+  width: 8rem;
+  height:2.5rem;
+  border-radius: 24rem;
 }
 
 .inputContainer {
@@ -157,6 +164,7 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   height: 19rem;
   margin-top: 1rem;
 }
@@ -211,9 +219,10 @@ span {
 
 .projects {
   width: 25%;
+  max-width: 12rem;
   display: flex;
+  padding-top: 5.8rem;
   flex-direction: column;
-  height: 100rem;
   align-items: center;
   background: linear-gradient(162.82deg, rgba(255, 255, 255, 0.07) 5.77%, rgba(196, 196, 196, 0) 56.95%);
 }
@@ -226,6 +235,11 @@ span {
   width:73%;
 
   background: #282828;
+}
+
+.darkGrey {
+  background: #282828;
+  height: 38rem;
 }
 
 .values {
